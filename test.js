@@ -25,10 +25,14 @@
 
 // init();
 
+const a = setTimeout(() => {
+  console.log("A");
+}, 2000);
 const b = setTimeout(() => {
   console.log("B");
 }, 1000);
 
-setTimeout(() => {
-  console.log("A");
-}, 2000).then(b);
+const c = new Promise((resolve, reject) => {
+  resolve();
+});
+c.then(a).then(b);
