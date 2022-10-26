@@ -1,4 +1,5 @@
 const mdbUser = require("../models/mdbUser.js");
+const userSchemaHapi = require("../models/validate/schema/userSchemaHapi.js");
 
 ("use strict");
 const plugin_name = "test";
@@ -23,6 +24,21 @@ const testPlugin = {
       handler: async (request, h) => {
         const find = await mdbUser.find();
         return find;
+        // return h.response(find).code(220);
+      },
+    });
+
+    server.route({
+      method: "POST",
+      path: "/useradd",
+      handler: async (request, h) => {
+        const createdUser = await mdbUser.create(request.payload);
+        return createdUser;
+      },
+      options: {
+        validate: {
+          payload: userSchemaHapi,
+        },
       },
     });
   },

@@ -5,7 +5,7 @@ const userSchemaHapi = require("./models/validate/schema/userSchemaHapi.js");
 const Joi = require("joi");
 const mongoose = require("mongoose");
 const mdbUser = require("./models/mdbUser.js");
-const boom = require('@hapi/boom')
+const boom = require("@hapi/boom");
 
 const mdb = async () =>
   await mongoose
@@ -46,7 +46,6 @@ const init = async () => {
       validate: {
         payload: userSchemaHapi,
       },
-
     },
   });
 
@@ -63,5 +62,4 @@ const init = async () => {
   console.log(server.info.uri);
 };
 
-mdb().then(init())
-
+mdb().then(init());

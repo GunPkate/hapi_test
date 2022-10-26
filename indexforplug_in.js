@@ -10,10 +10,10 @@ const mdb = async () =>
 const init = async () => {
   // call from router (plugin)
   await server.register({
-    plugin: require("hapi-geo-locate"),
+    plugin: require("hapi-geo-locate"), //import from Hapi plugin
   });
   await server.register({
-    plugin: require("./routes/test.js"),
+    plugin: require("./routes/test.js"), // import from router
   });
 
   await server.start();
